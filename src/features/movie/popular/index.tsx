@@ -5,24 +5,24 @@ import Card from '../../../components/Card';
 import Slider from '../../../components/Slider';
 
 const Base = styled.div`
-  /* margin-bottom: 42px; */
+  margin-bottom: 42px;
 `;
 
 const Title = styled.h4`
-  /* font-size: 22px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 30px;
-  padding: 12px 0 14px; */
+  padding: 12px 0 14px;
 `;
 
 const PopularSection: React.FC = () => {
     const { data, isLoading } = usePopularMovie()
-    console.log('data', data)
+    
     const getYear = (date: string) => date.split('-')[0]
 
     return (
         <Base>
-            <Title>최근 개봉작</Title>
+            <Title>인기상영작</Title>
             {
                 isLoading || !data ? (
                     <div>Loading...</div>

@@ -5,19 +5,18 @@ import Card from '../../../components/Card';
 
 
 const Base = styled.div`
-  /* margin-bottom: 42px; */
+  margin-bottom: 42px;
 `;
 
 const Title = styled.h4`
-  /* font-size: 22px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 30px;
-  padding: 12px 0 14px; */
+  padding: 12px 0 14px;
 `;
 
 const LatestMovieSection:React.FC = () => {
-    const {data, isLoading} = useLatestMovie()  
-
+    const {data, isLoading} = useLatestMovie()
     
     const getYear = (date: string) => date.split('-')[0]
 
