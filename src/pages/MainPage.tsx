@@ -22,15 +22,15 @@ const MainPage: React.FC = () => {
     return (
         <>
             <Header />
-                <Main>
-                    <Container>
-                        <LatestMovieSection />
-                        <NowPlayingSection />
-                        <PopularSection />
-                        <TopLateSection />
-                        <UpcomingSection />
-                    </Container>
-                </Main>
+            <Main>
+                <Container>
+                    <LatestMovieSection />
+                    <NowPlayingSection />
+                    <PopularSection />
+                    <TopLateSection />
+                    <UpcomingSection />
+                </Container>
+            </Main>
             <Footer />
         </>
     );

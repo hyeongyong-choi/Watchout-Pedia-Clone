@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {AiOutlineSearch} from 'react-icons/ai'
+import { AiOutlineSearch } from 'react-icons/ai'
 
 const Base = styled.header`
     width: 100%;
@@ -40,7 +40,7 @@ const Menu = styled.li`
   }
 `
 
-const MenuButton = styled.button<{active? : boolean}>`
+const MenuButton = styled.button<{ active?: boolean }>`
     font-size: 15px;
   color: ${({ active }) => active ? 'rgb(53, 53, 53)' : 'rgb(126, 126, 126)'};
   cursor: pointer;
@@ -78,6 +78,43 @@ const SearchContainer = styled.div`
     position: relative;
   width: 100%;
 `
+const SearchResultWrapper = styled.div`
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 9999999;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  max-height: 480px;
+  overflow-y: scroll;
+`;
+
+const SearchResultListItem = styled.li`
+  padding: 4px 6px;
+  box-sizing: border-box;
+  color: #222;
+  font-size: 16px;
+  width: 100%;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  &:hover {
+    background-color: #eee;
+  }
+`;
+
+const SearchResultList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
 
 const SearchFormWrapper = styled.div``
 
@@ -132,45 +169,58 @@ const SignUp = styled.button`
 `
 
 
-const Header: React.FC = () => {
-    const handleKeyword = () => {}
 
-    return (
-        <Base>
-            <Navigation>
-                <MenuListWrapper>
-                    <MenuList>
-                        <Menu>
-                            <Link href="/">
-                                <TextLogo>
-                                    <span className="primary">WATCHOUT</span>
-                                    <span>PEDIA</span>
-                                </TextLogo>
-                            </Link>
-                        </Menu>
-                        <Menu>
-                            <Link href="/">
-                                <MenuButton>영화</MenuButton>
-                            </Link>
-                            <Link href="/tv">
-                                <MenuButton>TV 프로그램</MenuButton>
-                            </Link>
-                        </Menu>
-                        <SearchMenu>
-                            <SearchContainer>
-                                <SearchForm>
-                                    <SearchLabel>
-                                    <AiOutlineSearch/>
-                                    <SearchInput placeholder="콘텐츠,인물,컬렉션,유저를 검색해보세여." onChange={handleKeyword}/>
-                                    </SearchLabel>
-                                </SearchForm>
-                            </SearchContainer>
-                        </SearchMenu>
-                    </MenuList>
-                </MenuListWrapper>
-            </Navigation>
-        </Base>
-    );
+
+const Header: React.FC = () => {
+  const handleKeyword = () => { }
+
+  return (
+    <Base>
+      <Navigation>
+        <MenuListWrapper>
+          <MenuList>
+            <Menu>
+              <Link href="/">
+                <TextLogo>
+                  <span className="primary">WATCHOUT</span>
+                  <span>PEDIA</span>
+                </TextLogo>
+              </Link>
+            </Menu>
+            <Menu>
+              <Link href="/">
+                <MenuButton>영화</MenuButton>
+              </Link>
+              <Link href="/tv">
+                <MenuButton>TV 프로그램</MenuButton>
+              </Link>
+            </Menu>
+            <SearchMenu>
+              <SearchContainer>
+                <SearchForm>
+                  <SearchLabel>
+                    <AiOutlineSearch />
+                    <SearchInput placeholder="콘텐츠,인물,컬렉션,유저를 검색해보세여." onChange={handleKeyword} />
+                  </SearchLabel>
+                </SearchForm>
+              </SearchContainer>
+              <SearchResultWrapper>
+                <SearchResultList>
+                  
+                </SearchResultList>
+              </SearchResultWrapper>
+            </SearchMenu>
+            <Menu>
+              <SignIn >로그인</SignIn>
+            </Menu>
+            <Menu>
+              <SignUp >회원가입</SignUp>
+            </Menu>
+          </MenuList>
+        </MenuListWrapper>
+      </Navigation>
+    </Base>
+  );
 };
 
 export default Header;
