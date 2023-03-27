@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { AiOutlineSearch } from 'react-icons/ai'
+import useMovieSearch from '../features/movie/useMovieSearch';
 
 const Base = styled.header`
     width: 100%;
@@ -172,7 +173,13 @@ const SignUp = styled.button`
 
 
 const Header: React.FC = () => {
-  const handleKeyword = () => { }
+  const [searchKeyword, setSearchKeyword] = useState<string>('')
+
+  const handleKeyword = (e:React.ChangeEvent<HTMLInputElement>): void => {
+    setSearchKeyword(e.target.value)
+  }
+
+  const {data:searchResult} = useMovieSearch(searchKeyword)
 
   return (
     <Base>
@@ -206,7 +213,13 @@ const Header: React.FC = () => {
               </SearchContainer>
               <SearchResultWrapper>
                 <SearchResultList>
-                  
+                  {
+                    searchResult?.data.results.map(item => (
+                      <Link key={item.id} href={`/movie/${item.id}`}>
+                        <SearchResultListItem>{item.title}</SearchResultListItem>
+                      </Link>
+                    ))
+                  }
                 </SearchResultList>
               </SearchResultWrapper>
             </SearchMenu>
