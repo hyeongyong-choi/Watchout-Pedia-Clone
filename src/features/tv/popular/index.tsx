@@ -19,7 +19,7 @@ const Title = styled.h4`
 const PopularSection = () => {
     const {data, isLoading} = usePopular();
 
-    const getYear = (date: string) => (date||"").split('-')[0]
+    const getYear = (date: string) => date?.split('-')[0]
 
     return (
         <Base>

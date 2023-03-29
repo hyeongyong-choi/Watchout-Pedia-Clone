@@ -18,7 +18,7 @@ const Title = styled.h4`
 const PopularSection: React.FC = () => {
     const { data, isLoading } = usePopularMovie()
     
-    const getYear = (date: string) => date.split('-')[0]
+    const getYear = (date: string) => date?.split('-')[0]
 
     return (
         <Base>

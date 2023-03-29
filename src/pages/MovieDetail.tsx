@@ -6,10 +6,13 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import {FaPen} from 'react-icons/fa'
 import {AiFillEye} from 'react-icons/ai'
 import {FiMoreHorizontal} from 'react-icons/fi'
+import { Rating } from '@mui/material';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import useMovieDetail from '../features/movie/useMovieDetail';
+import DefaultInfo from '../features/movie/detail/DefaultInfo';
+import Similar from '../features/movie/detail/Similar';
 
 const Base = styled.div`
   position: relative;
@@ -210,8 +213,8 @@ const MovieDetail:React.FC = () => {
     const { id } = useParams<Params>();
   const { isLoading, data } = useMovieDetail(id ?? "");
 
-  const year = useMemo(() => data?.data.release_date?.split('-')[0] || '', [data]);
-  const genres = useMemo(() => data?.data.genres?.map(genre => genre.name).join('/') || '', [data]);
+  const year = useMemo(() => (data?.data.release_date || '').split('-')[0] || '', [data]);
+  const genres = useMemo(() => data?.data.genres.map(genre => genre.name).join('/') || '', [data]);
 
     return (
         <Base>
@@ -252,7 +255,7 @@ const MovieDetail:React.FC = () => {
                       <StarRate>
                         <StarRateText>평가하기</StarRateText>
                         <RatingWrapper>
-                          {/* <Rating size="large" /> */}
+                          <Rating size="large" />
                         </RatingWrapper>
                       </StarRate>
                       <Divider />
@@ -284,8 +287,8 @@ const MovieDetail:React.FC = () => {
 
             <BottomInfo>
               <ContentSectionContainer>
-                {/* <DefaultInfo title={data.title} year={year} genres={genres} runtime={data.runtime} overview={data.overview} />
-                <Similar id={id ?? ""} /> */}
+                <DefaultInfo title={data.data.title} year={year} genres={genres} runtime={data.data.runtime} overview={data.data.overview} />
+                <Similar id={id ?? ""} />
               </ContentSectionContainer>
             </BottomInfo>
           </>

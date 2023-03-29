@@ -18,7 +18,7 @@ const Title = styled.h4`
 const UpcomingSection: React.FC = () => {
     const { data, isLoading } = useUpcomingMovie()
     
-    const getYear = (date: string) => date.split('-')[0]
+    const getYear = (date: string) => date?.split('-')[0]
 
     return (
         <Base>

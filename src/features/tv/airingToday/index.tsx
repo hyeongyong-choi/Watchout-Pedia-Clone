@@ -19,7 +19,7 @@ const Title = styled.h4`
 const AiringTodaySection = () => {
     const {data, isLoading} = useAiringTodayTv();
 
-    const getYear = (date: string) => (date||"").split('-')[0]
+    const getYear = (date: string) => date?.split('-')[0]
 
     return (
         <Base>

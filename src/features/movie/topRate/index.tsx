@@ -18,7 +18,7 @@ const Title = styled.h4`
 const TopLateSection: React.FC = () => {
     const { data, isLoading } = useTopRateMovie()
     
-    const getYear = (date: string) => date.split('-')[0]
+    const getYear = (date: string) => date?.split('-')[0]
 
     return (
         <Base>
